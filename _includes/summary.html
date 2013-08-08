@@ -1,0 +1,21 @@
+<div class="summary theme light{% if post.tease %} tease{% endif %} {{ class }}"
+{% if post.op %} 
+	style="background-image: {{ post.op.src }};"
+{% endif %}>
+
+{% if post.tease %}
+	<h2>
+		{{ post.title }}
+	</h2>
+{% else %}
+	<h2>
+		<a href="{{ post.url }}">{{ post.title }}</a>
+	</h2>
+	<div class="date">{{ post.date | date: "%Y-%m-%d" }}</div>
+{% endif %}
+	<ul class="digest">
+	{% for dig in post.digest %}
+		<li>{{ dig }}</li>
+	{% endfor %}
+	</ul>
+</div>

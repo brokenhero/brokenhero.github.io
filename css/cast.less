@@ -1,0 +1,76 @@
+.char-left (@text-color, @background-color) {
+	
+	ul.conversation > li.left {
+		&:before {
+			color: @text-color;
+		}
+		> span {
+			.bubble-left(@text-color, @background-color);
+		}
+	}
+}
+.char-right (@text-color, @background-color) {
+	
+	ul.conversation > li.right {
+		&:before {
+			color: @text-color;
+		}
+		> span {
+			.bubble-right(@text-color, @background-color);
+		}
+	}
+}
+
+
+
+// TODO: may add color to quotes
+
+// TODO: possible to get HSB util?
+
+@c-f2: #F2F2F2; // 0-0-95
+@c-66: #666666; // 0-0-40
+
+//@c-120-20-95: #C2F2C2;
+//@c-120-20-40: #526652;
+@c-150-5-95:  #E6F2EC;
+@c-150-20-40: #52665C;
+@c-210-5-95:  #E6ECF2;
+@c-210-20-40: #525C66;
+
+#post-body #entry {
+	/*
+	&.left-c-120 {
+		.char-left(@c-120-20-40, @c-120-20-95);
+	}
+	&.right-c-120 {
+		.char-right(@c-120-20-40, @c-120-20-95);
+	}
+	*/
+	
+	&.left-c-150 {
+		.char-left(@c-150-20-40, @c-150-5-95);
+	}
+	&.right-c-150 {
+		.char-right(@c-150-20-40, @c-150-5-95);
+	}
+	
+	&.left-c-210 {
+		.char-left(@c-210-20-40, @c-210-5-95);
+	}
+	&.right-c-210 {
+		.char-right(@c-210-20-40, @c-210-5-95);
+	}
+	
+}
+
+ul.conversation > li.quote {
+	
+	&.c-150 {
+		color: @c-150-20-40;
+	}
+	
+	&.c-210 {
+		color: @c-210-20-40;
+	}
+	
+}

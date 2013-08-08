@@ -1,0 +1,7 @@
+name: Broken Hero
+author: pushknocker
+category_dir: /
+permalink: pretty
+exclude: [README.md]
+
+version: 1.0.0

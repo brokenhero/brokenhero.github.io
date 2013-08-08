@@ -1,0 +1,491 @@
+@import url(http://fonts.googleapis.com/css?family=Cuprum);
+@import url(http://fonts.googleapis.com/css?family=Oxygen:300,400,700);
+@import "util.less";
+@import "font.less";
+@import "ascii.less";
+@import "layout.less";
+@import "cast.less";
+
+@body-font-en: 'Oxygen', Arial, Helvetica, FreeSans;
+@body-font-zh: "蘋果儷中黑", "微軟正黑體";
+@body-font: @body-font-en, @body-font-zh, sans-serif;
+@title-font: 'Cuprum', @body-font-zh, sans-serif;
+@index-title-font: 'Cuprum', sans-serif;
+@post-title-font: 'Cuprum', sans-serif;
+@section-title-font: @title-font;
+
+@color-pk-main: #1C2F40; // h208-s56-b25
+@color-pk-sub:  #CFDBE5; // h208-s10-b90
+@color-pk-link: #2E90E5; // h208-s80-b90
+@f6: #F6F6F6;
+
+@header-link-height: 24px;
+
+// body //
+body {
+	background-color: @f6;
+	font-family: @body-font;
+}
+h1, h2, h3, h4, h5, h6, 
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: @title-font;
+	font-weight: bold;
+}
+zh {
+	font-family: @body-font-zh !important;
+}
+
+// header; footer //
+#header, #footer {
+	background-color: @color-pk-main;
+	box-shadow: 0 0 5px 0 #000;
+	
+	a {
+		display: inline-block;
+		height: @header-link-height;
+		line-height: @header-link-height;
+		
+		margin: 0 8px;
+		margin-top: (@header-height - @header-link-height) / 2;
+		
+		font-weight: bold;
+		font-size: 16px;
+		color: @f6;
+	}
+	
+}
+#footer {
+	text-align: center;
+}
+.version {
+	display: inline-block;
+	height: 100%;
+	line-height: @footer-height;
+	font-size: 16px;
+	color: #FFF;
+}
+#cc-set, #social-set {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	padding: 0 20px;
+}
+#cc-set .cc-icon, #social-set .icon {
+	color: @f6;
+	text-shadow: 0 0 2px @f6;
+}
+#cc-set {
+	left: 0;
+	
+	.cc-icon {
+		display: inline-block;
+		margin-right: 4px;
+		font-size: 33px;
+		height: @footer-height;
+		line-height: @footer-height;
+	}
+}
+#social-set {
+	right: 0;
+	
+	a {
+		padding: 3px;
+		margin: 9px 0;
+		text-decoration: none;
+	}
+	.icon {
+		.square(24px);
+		font-size: 24px;
+	}
+}
+
+
+
+// partial: summary //
+.summary {
+	position: relative;
+	height: @summary-height;
+	padding: 8px 16px;
+	.separator(@summary-border);
+	color: #444;
+	
+	h2 {
+		height: 64px;
+		line-height: 64px;
+		font-size: 48px;
+		margin: 0;
+		padding: 0;
+		.link-color(@color-pk-link);
+	}
+	.date {
+		margin-bottom: 6px;
+		font-style: italic;
+		font-size: 16px;
+		color: #AAA;
+	}
+	ul.digest {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		
+		> li {
+			line-height: 32px;
+			font-size: 20px;
+		}
+	}
+	
+	&.tease::after {
+		content: '- Coming Soon -';
+		.full;
+		line-height: @summary-height;
+		text-align: center;
+		.gradient(hor; fadeout(@f6, 50%) 0%, fadeout(@f6, 75%) 50%, fadeout(@f6, 50%) 100%);
+		font-family: @title-font;
+		font-size: 80px;
+		color: fadeout(@color-pk-main, 50%);
+	}
+	
+	&.left, 
+	&.right {
+		.box-sizing(border-box);
+		position: absolute !important;
+		top: 0;
+		bottom: 0;
+		width: 50%;
+		border: none;
+		
+		h2 {
+			height: 48px;
+			line-height: 48px;
+			font-size: 36px;
+		}
+		ul.digest > li {
+			line-height: 24px;
+			font-size: 16px;
+		}
+		&.tease::after {
+			font-size: 60px;
+		}
+	}
+	&.left {
+		left: 0;
+	}
+	&.right {
+		right: 0;
+		text-align: right;
+	}
+}
+
+
+
+// index //
+@index-opening-height: 360px;
+@index-opening-font-size: 180px;
+@summary-height: 240px;
+@summary-border: 1px solid #AAA;
+
+.theme {
+	.theme-mask(@f6);
+	
+	&.light {
+		.theme-mask(@f6, 20%);
+	}
+}
+
+#opening {
+	border-bottom: @summary-border;
+	.user-select(none);
+	cursor: default;
+	
+	h1 {
+		margin: 0;
+		text-align: center;
+		height: @summary-height; // TODO: check use
+		line-height: @summary-height; // TODO: check use
+		font-family: @index-title-font;
+		color: @color-pk-main;
+		.transform(scaleX(0.67));
+	}
+}
+
+#index-body > #opening {
+	h1 {
+		font-size: @index-opening-font-size;
+		height: @index-opening-height;
+		line-height: @index-opening-height;
+	}
+}
+
+
+
+// post //
+@post-section-header-height: 120px;
+@default-char-text-color: #666;
+@default-char-background-color: #F0F0F0;
+
+@ending-height: 240px;
+@relatives-height: 240px;
+
+#post-body {
+	#opening {
+		h1 {
+			font-size: 120px;
+			font-family: @post-title-font;
+			text-shadow: 0 0 2px @f6;
+		}
+		#op-info {
+			display: inline-block;
+			position: absolute;
+			right: 12px;
+			bottom: 8px;
+			color: rgba(0, 0, 0, 0.33);
+			
+			i {
+				display: inline-block;
+				width: 24px;
+				height: 24px;
+				line-height: 24px;
+				text-align: center;
+				font-size: 16px;
+			}
+			&:hover {
+				color: rgba(0, 0, 0, 0.67);
+			}
+		}
+		.tooltip(@color-pk-main);
+		.tooltip {
+			position: absolute;
+		}
+	}
+	#ending {
+		height: @ending-height;
+	}
+	#references {
+		text-align: center;
+		padding-bottom: 52px;
+		
+		> ol {
+			display: inline-block;
+			margin-bottom: 0;
+			.link-color(@color-pk-link);
+			
+			> li {
+				text-align: left;
+				line-height: 24px;
+				font-size: 17px;
+			}
+		}
+	}
+	#relatives {
+		position: relative;
+		height: @relatives-height;
+	}
+	#cast {
+		&:before {
+			content: '- Special Thanks -' !important;
+		}
+		> ul {
+			margin: 0;
+			text-align: center;
+			.link-color(@color-pk-link);
+			
+			> li {
+				line-height: 20px;
+				font-size: 20px;
+				margin-bottom: 20px;
+			}
+		}
+	}
+	#entry {
+		.char-left(@default-char-text-color, @default-char-background-color);
+		.char-right(@default-char-text-color, @default-char-background-color);
+		
+		> section {
+			position: relative;
+			border-bottom: @summary-border;
+			
+			&[header], &#cast {
+				padding-top: @post-section-header-height;
+				
+				&:before {
+					position: absolute;
+					top: 0;
+					left: 0;
+					display: block;
+					height: @post-section-header-height;
+					width: 100%;
+					line-height: @post-section-header-height;
+					text-align: center;
+					content: '- ' attr(header) ' -';
+					font-family: @section-title-font;
+					font-size: 34px; // TODO: need feedback
+				}
+				
+				> ul {
+					padding-top: 0;
+				}
+			}
+			
+			> ul {
+				list-style: none;
+				padding: 32px 0;
+			}
+		}
+		
+		// in general, the policy for links in a post
+		a {
+			color: inherit;
+		}
+		
+		sup {
+			font-size: 50%;
+			top: -1em;
+			margin: 0 2px;
+			.link-color(@color-pk-link);
+			
+			> cite {
+				display: none;
+			}
+		}
+	}
+	
+}
+
+ul.conversation {
+	margin: 0 240px;
+	
+	> li {
+		position: relative;
+		font-size: 20px;
+		line-height: 26px;
+		.gap(16px);
+		
+		a[href] {
+			text-decoration: underline; // so user can tell links from other colored texts.
+		}
+		
+		&:before {
+			position: absolute;
+			top: 0;
+			white-space: nowrap;
+			padding: 11px 23px;
+		}
+		
+		> span {
+			padding: 9px 12px;
+			border-radius: 13px;
+			box-shadow: 0 0 3px rgba(0,0,0,0.2);
+			font-weight: 300; // for Oxygen font
+		}
+		&.left:before {
+			right: 100%;
+		}
+		&.right:before {
+			left: 100%;
+		}
+		&.right {
+			text-align: right;
+		}
+		&.quote {
+			padding: 64px 0;
+			text-align: center;
+			
+			&.b > span {
+				font-weight: bold;
+			}
+			&.i > span {
+				font-style: italic;
+			}
+			
+			> span {
+				padding: 0;
+				border-radius: 0;
+				box-shadow: none;
+				display: inline-block; // for text-align
+				text-align: left;
+			}
+		}
+	}
+}
+
+ul.act {
+	margin: 0 180px;
+	
+	> li {
+		position: relative;
+		font-size: 20px;
+		line-height: 26px;
+		.gap(16px);
+		height: 180px;
+		width: 100%;
+		
+		&:before {
+			position: absolute;
+			font-size: 24px;
+			line-height: 24px;
+		}
+		
+		&.left,
+		&.right {
+			.box-sizing(border-box);
+			display: table;
+			
+			> div {
+				display: table-cell;
+				vertical-align: middle;
+				padding: 0 48px;
+				
+				> span {
+					display: inline-block; // for text-align
+					text-align: left;
+					font-weight: 300; // for Oxygen font
+				}
+			}
+		}
+		
+		&.left {
+			padding-left: 240px;
+			
+			> div {
+				text-align: left;
+			}
+			
+			&:before {
+				.bear-left;
+				top: 18px;
+				left: 24px;
+			}
+		}
+		&.right {
+			padding-right: 240px;
+			
+			> div {
+				text-align: right;
+			}
+			
+			&:before {
+				.bear-right;
+				top: 18px;
+				right: 24px;
+			}
+		}
+		&.left-uppercut {
+			
+			&:before {
+				.bear-left-uppercut;
+				top: -16px;
+				right: 0;
+			}
+		}
+		&.right-uppercut {
+			
+			&:before {
+				.bear-right-uppercut;
+				top: -16px;
+				left: 0;
+			}
+		}
+		
+	}
+}

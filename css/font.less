@@ -1,0 +1,60 @@
+@font-face {
+	font-family: 'Creative Commons Icon';
+	src: url('/font/cc-icons.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.cc-icon {
+	
+	font-family: 'Creative Commons Icon';
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: inherit;
+	-webkit-font-smoothing: antialiased;
+	
+	display: inline;
+	width: auto;
+	height: auto;
+	line-height: normal;
+	vertical-align: baseline;
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	margin-top: 0;
+	
+	&::before {
+		text-decoration: inherit;
+		display: inline-block;
+		speak: none;
+	}
+	
+	&.sa::before {
+		content: 'a';
+	}
+	&.by::before {
+		content: 'b';
+	}
+	&.cc::before {
+		content: 'c';
+	}
+	&.nd::before {
+		content: 'd';
+	}
+	&.nc::before {
+		content: 'n';
+	}
+	&.sampling::before {
+		content: 'm';
+	}
+	&.share::before {
+		content: 's';
+	}
+	&.remix::before {
+		content: 'r';
+	}
+	&.full::before {
+		content: 'C';
+	}
+	
+}

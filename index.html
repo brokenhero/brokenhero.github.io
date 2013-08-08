@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+<div id="index-body">
+	<div id="opening">
+		<h1>Broken Hero</h1>
+	</div>
+
+	{% for post in site.posts limit: 10 %}
+		{% include summary.html %}
+	{% endfor %}
+</div>

@@ -1,0 +1,183 @@
+// cross browser //
+.transition (@value) {
+	transition: @value;
+	-webkit-transition: @value;
+}
+
+.box-sizing (@value) {
+	box-sizing: @value;
+	-moz-box-sizing: @value;
+}
+
+.user-select (@value) {
+	-webkit-touch-callout: @value;
+	-webkit-user-select: @value;
+	-khtml-user-select: @value;
+	-moz-user-select: @value;
+	-ms-user-select: @value;
+	user-select: @value;
+}
+	
+.transform (@value) {
+	transform: @value;
+	-ms-transform: @value;
+	-webkit-transform: @value;
+}
+
+.gradient (ver; @stops) {
+	background: -moz-linear-gradient(top, @stops); /* FF3.6+ */
+	background: -webkit-linear-gradient(top, @stops); /* Chrome10+, Safari5.1+ */
+	background: -o-linear-gradient(top, @stops); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, @stops); /* IE10+ */
+	background: linear-gradient(to bottom, @stops); /* W3C */
+}
+.gradient (hor; @stops) {
+	background: -moz-linear-gradient(left, @stops); /* FF3.6+ */
+	background: -webkit-linear-gradient(left, @stops); /* Chrome10+, Safari5.1+ */
+	background: -o-linear-gradient(left, @stops); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, @stops); /* IE10+ */
+	background: linear-gradient(to right, @stops); /* W3C */
+}
+.gradient (rad; @stops) {
+	background: -moz-radial-gradient(center, ellipse cover, @stops); /* FF3.6+ */
+	background: -webkit-radial-gradient(center, ellipse cover, @stops); /* Chrome10+, Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover, @stops); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover, @stops); /* IE10+ */
+	background: radial-gradient(ellipse at center, @stops); /* W3C */
+}
+
+
+
+// bootstrap //
+.tooltip (@color) {
+	.tooltip {
+		&.top .tooltip-arrow {
+			border-top-color: @color;
+		}
+		&.bottom .tooltip-arrow {
+			border-bottom-color: @color;
+		}
+		&.left .tooltip-arrow {
+			border-left-color: @color;
+		}
+		&.right .tooltip-arrow {
+			border-right-color: @color;
+		}
+		.tooltip-inner {
+			background-color: @color;
+		}
+	}
+}
+
+
+
+// user defined //
+.full () {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.square (@size) {
+	display: inline-block;
+	height: @size;
+	width: @size;
+	line-height: @size;
+}
+
+.theme-mask (@color; @opacity: 33%) {
+	position: relative;
+	background-position: center center;
+	background-size: 100% auto;
+	
+	> * {
+		position: relative; // so ::before does not cover children
+	}
+	&::before {
+		content: '';
+		.full;
+		.gradient(hor; @color 0%, fadeout(@color, @opacity) 50%, @color 100%);
+	}
+	&.left::before {
+		.gradient(hor; @color 0%, fadeout(@color, @opacity) 50%, fadeout(@color, @opacity) 100%);
+	}
+	&.right::before {
+		.gradient(hor; fadeout(@color, @opacity) 0%, fadeout(@color, @opacity) 50%, @color 100%);
+	}
+}
+
+.separator (@border) {
+	border-bottom: @border;
+	
+	&:last-child {
+		border-bottom: none;
+	}
+}
+
+.gap (@size) {
+	margin-bottom: @size;
+	
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.link-color(@color) {
+	a {
+		color: @color;
+		
+		&:hover {
+			color: darken(@color, 20%);
+		}
+	}
+}
+
+.bubble-base (@border-color; @background-color; @border-width; @size; @top; @aspect) {
+	position: relative;
+	display: inline-block;
+	text-align: left;
+	
+	border: @border-width solid @border-color;
+	background-color: @background-color;
+	color: @border-color;
+	
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		border-style: solid;
+	}
+	&::before {
+		top: @top - @size - @border-width - 1;
+		border-color: transparent @border-color;
+		border-width: (@size + @border-width + 1) ((@size + @border-width) * @aspect + 1);
+		z-index: -1;
+	}
+	&::after {
+		top: @top - @size;
+		border-color: transparent @background-color;
+		border-width: @size (@size * @aspect);
+	}
+}
+
+.bubble-left (@border-color; @background-color; @border-width: 2px; @size: 6px; @top: 21px; @aspect: 1.8) {
+	.bubble-base(@border-color, @background-color, @border-width, @size, @top, @aspect);
+	
+	&::before,
+	&::after {
+		right: 100%;
+		border-left: none;
+	}
+}
+
+.bubble-right (@border-color; @background-color; @border-width: 2px; @size: 6px; @top: 21px; @aspect: 1.8) {
+	.bubble-base(@border-color, @background-color, @border-width, @size, @top, @aspect);
+	
+	&::before,
+	&::after {
+		left: 100%;
+		border-right: none;
+	}
+}

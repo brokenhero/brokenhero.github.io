@@ -1,0 +1,24 @@
+@body-font-act: "細明體", monospace;
+
+.ascii () {
+	font-family: @body-font-act;
+	white-space: pre;
+	text-align: left;
+}
+
+.bear-right () {
+	.ascii;
+	content: '    ∩＿＿∩\A    /︵　︵ ˋ\A   (⊙)(⊙)   ˋ\A ≡ (_●_ )@  |\A ミ﹑|∪|　    ≡\A    ／﹨ノ@';
+}
+.bear-left () {
+	.bear-right;
+	.transform(scaleX(-1));
+}
+.bear-right-uppercut () {
+	.ascii;
+	content: '                ____\A               ／ ))))\A         ∩＿＿(  ⊂)  ∩＿＿∩\A        /︵　︵|   /  /︵　︵ ˋ\A       (⊙)( ( ﹨  \\ (⊙)(⊙)   ˋ\A .   ≡ (_●_ ( ﹨ ≡ (_●_ )@  |\A  ∴ ∵  |∪|　    ミ﹑|∪|　    ≡\A  .∵.    ﹨／﹨      ／﹨ノ@';
+}
+.bear-left-uppercut () {
+	.bear-right-uppercut;
+	.transform(scaleX(-1));
+}
