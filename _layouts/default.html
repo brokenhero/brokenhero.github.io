@@ -2,6 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8" />
+	<meta property="og:url" content="http://{{ site.root_url }}" />
+	<meta property="og:title" content="{{ site.name }}{% if page.title %} / {{ page.title }} {% endif %}" />
 {% if page.pre.image %}
 	<meta property="og:image" content="http://{{ site.root_url }}{{ page.pre.image }}" />
 {% elsif page.op.src %}
