@@ -9,6 +9,11 @@
 {% elsif page.op.src %}
 	<meta property="og:image" content="http://{{ site.root_url }}{{ page.op.src }}" />
 {% endif %}
+{% if page.pre.desc %}
+	<meta property="og:description" content="{{ page.pre.desc }}" />
+{% elsif page.digest %}
+	<meta property="og:description" content="{{ page.digest | join: '<br>' }}" />
+{% endif %}
 	<title>{{ site.name }}{% if page.title %} / {{ page.title }} {% endif %}</title>
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
