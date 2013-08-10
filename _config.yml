@@ -4,4 +4,5 @@ category_dir: /
 permalink: pretty
 exclude: [README.md]
 
+root_url: brokenhero.github.io
 version: 1.0.0
