@@ -2,6 +2,14 @@ $(function () {
 	// image information
 	$('#op-info').tooltip();
 	
+	$('[data-type="twitter"]').wrapInner(function (index) {
+		return '<a href="http://www.twitter.com/' + (this.getAttribute('data-href') || this.innerHTML) + '"></a>';
+	});
+	
+	
+	
+	// post //
+	
 	// hach post DOM
 	$('ul.conversation > li').wrapInner('<span />');
 	$('ul.act > li').wrapInner('<div><span /></div>');

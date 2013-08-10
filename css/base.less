@@ -1,5 +1,7 @@
-@import url(http://fonts.googleapis.com/css?family=Cuprum);
+@import url(http://fonts.googleapis.com/css?family=Cuprum:400,700);
 @import url(http://fonts.googleapis.com/css?family=Oxygen:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Marcellus+SC);
+
 @import "util.less";
 @import "font.less";
 @import "ascii.less";
@@ -10,7 +12,6 @@
 @body-font-zh: "蘋果儷中黑", "微軟正黑體";
 @body-font: @body-font-en, @body-font-zh, sans-serif;
 @title-font: 'Cuprum', @body-font-zh, sans-serif;
-@index-title-font: 'Cuprum', sans-serif;
 @post-title-font: 'Cuprum', sans-serif;
 @section-title-font: @title-font;
 
@@ -180,8 +181,10 @@ zh {
 
 
 // index //
-@index-opening-height: 360px;
-@index-opening-font-size: 180px;
+@brand-height: 360px;
+@brand-font: 'Marcellus SC', sans-serif;
+@brand-font-size: 150px;
+
 @summary-height: 240px;
 @summary-border: 1px solid #AAA;
 
@@ -201,19 +204,18 @@ zh {
 	h1 {
 		margin: 0;
 		text-align: center;
-		height: @summary-height; // TODO: check use
-		line-height: @summary-height; // TODO: check use
-		font-family: @index-title-font;
 		color: @color-pk-main;
-		.transform(scaleX(0.67));
 	}
 }
 
 #index-body > #opening {
 	h1 {
-		font-size: @index-opening-font-size;
-		height: @index-opening-height;
-		line-height: @index-opening-height;
+		height: @brand-height;
+		line-height: @brand-height;
+		
+		font-family: @brand-font;
+		font-size: @brand-font-size;
+		font-weight: normal;
 	}
 }
 
@@ -230,9 +232,14 @@ zh {
 #post-body {
 	#opening {
 		h1 {
+			height: @summary-height;
+			line-height: @summary-height;
+			
 			font-size: 120px;
 			font-family: @post-title-font;
 			text-shadow: 0 0 2px @f6;
+			
+			.transform(scaleX(0.67));
 		}
 		#op-info {
 			display: inline-block;
