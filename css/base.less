@@ -12,7 +12,7 @@
 @body-font-zh: "蘋果儷中黑", "微軟正黑體";
 @body-font: @body-font-en, @body-font-zh, sans-serif;
 @title-font: 'Cuprum', @body-font-zh, sans-serif;
-@post-title-font: 'Cuprum', sans-serif;
+@post-title-font: 'Cuprum', simsun, sans-serif;
 @section-title-font: @title-font;
 
 @color-pk-main: #1C2F40; // h208-s56-b25
@@ -240,6 +240,17 @@ zh {
 			text-shadow: 0 0 2px @f6;
 			
 			.transform(scaleX(0.67));
+			
+			&::before, &::after {
+				position: relative;
+				top: -8px;
+			}
+			&::before {
+				content: '[ ';
+			}
+			&::after {
+				content: ' ]';
+			}
 		}
 		#op-info {
 			display: inline-block;

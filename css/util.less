@@ -150,9 +150,9 @@
 		border-style: solid;
 	}
 	&::before {
-		top: @top - @size - @border-width - 1;
+		top: @top - @size - @border-width;
 		border-color: transparent @border-color;
-		border-width: (@size + @border-width + 1) ((@size + @border-width) * @aspect + 1);
+		border-width: (@size + @border-width) ((@size + @border-width) * @aspect);
 		z-index: -1;
 	}
 	&::after {
