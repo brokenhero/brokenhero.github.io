@@ -232,6 +232,7 @@ zh {
 #post-body {
 	#opening {
 		h1 {
+			white-space: nowrap;
 			height: @summary-height;
 			line-height: @summary-height;
 			
@@ -239,18 +240,8 @@ zh {
 			font-family: @post-title-font;
 			text-shadow: 0 0 2px @f6;
 			
-			.transform(scaleX(0.67));
-			
-			&::before, &::after {
-				position: relative;
-				top: -8px;
-			}
-			&::before {
-				content: '[ ';
-			}
-			&::after {
-				content: ' ]';
-			}
+			letter-spacing: 2px;
+			.transform(scaleX(0.8));
 		}
 		#op-info {
 			display: inline-block;
