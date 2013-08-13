@@ -209,13 +209,33 @@ zh {
 }
 
 #index-body > #opening {
+	height: @brand-height;
+	
+	h1, h2 {
+		font-family: @brand-font;
+		font-weight: normal;
+	}
 	h1 {
 		height: @brand-height;
 		line-height: @brand-height;
-		
-		font-family: @brand-font;
 		font-size: @brand-font-size;
-		font-weight: normal;
+	}
+	table {
+		// for smaller screen
+		display: none;
+		height: 100%;
+		width: 100%;
+		
+		td {
+			vertical-align: middle;
+			text-align: center;
+			
+			h2 {
+				margin: 0;
+				font-size: 120px;
+				line-height: 140px;
+			}
+		}
 	}
 }
 
@@ -313,6 +333,7 @@ zh {
 		
 		> section {
 			position: relative;
+			overflow-x: hidden;
 			border-bottom: @summary-border;
 			
 			&[header], &#cast {
@@ -420,6 +441,7 @@ ul.conversation {
 }
 
 ul.act {
+	overflow-x: hidden;
 	margin: 0 180px;
 	
 	> li {
@@ -499,3 +521,5 @@ ul.act {
 		
 	}
 }
+
+@import "responsive.less";

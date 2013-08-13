@@ -1,0 +1,50 @@
+@media (max-width: 1200px) {
+	ul.conversation {
+		margin: 0 180px;
+	}
+	ul.act {
+		margin: 0 90px;
+	}
+}
+
+@media (max-width: 1024px) {
+	#index-body > #opening {
+		h1 {
+			font-size: 120px; // TODO: try to make this into 992px set
+		}
+	}
+}
+
+@media (max-width: 992px) {
+	ul.conversation {
+		margin: 0 120px;
+	}
+	ul.act {
+		margin: 0;
+	}
+	.summary.left.tease::after, 
+	.summary.right.tease::after {
+		font-size: 50px;
+	}
+}
+
+@media (max-width: 768px) {
+	#index-body > #opening {
+		h1 {
+			display: none;
+		}
+		table {
+			display: table;
+		}
+	}
+	ul.act {
+		margin: 0 -60px;
+	}
+	.summary.tease::after {
+		font-size: 70px;
+	}
+	.summary.left.tease::after, 
+	.summary.right.tease::after {
+		font-size: 40px;
+	}
+}
