@@ -13,8 +13,8 @@
 	</h2>
 	<div class="date">{{ post.date | date: "%Y-%m-%d" }}</div>
 {% endif %}
-	<ul class="digest">
-	{% for dig in post.digest %}
+	<ul class="teaser">
+	{% for dig in post.teaser %}
 		<li>{{ dig }}</li>
 	{% endfor %}
 	</ul>
