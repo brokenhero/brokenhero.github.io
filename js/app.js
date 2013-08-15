@@ -10,7 +10,7 @@ $(function () {
 	
 	// post //
 	
-	// hach post DOM
+	// hack post DOM
 	$('ul.conversation > li').wrapInner('<span />');
 	$('ul.act > li').wrapInner('<div><span /></div>');
 	
