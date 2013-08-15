@@ -87,7 +87,7 @@
 	line-height: @size;
 }
 
-.theme-mask (@color; @opacity: 33%) {
+.theme-mask (@_; @color; @opacity: 33%) {
 	position: relative;
 	background-position: center center;
 	background-size: 100% auto;
@@ -98,12 +98,20 @@
 	&::before {
 		content: '';
 		.full;
+	}
+}
+.theme-mask (full; @color; @opacity: 33%) {
+	&::before {
 		.gradient(hor; @color 0%, fadeout(@color, @opacity) 50%, @color 100%);
 	}
-	&.left::before {
+}
+.theme-mask (left; @color; @opacity: 33%) {
+	&::before {
 		.gradient(hor; @color 0%, fadeout(@color, @opacity) 50%, fadeout(@color, @opacity) 100%);
 	}
-	&.right::before {
+}
+.theme-mask (right; @color; @opacity: 33%) {
+	&::before {
 		.gradient(hor; fadeout(@color, @opacity) 0%, fadeout(@color, @opacity) 50%, @color 100%);
 	}
 }

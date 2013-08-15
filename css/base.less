@@ -189,10 +189,13 @@ zh {
 @summary-border: 1px solid #AAA;
 
 .theme {
-	.theme-mask(@f6);
+	.theme-mask(full, @f6, 20%);
 	
-	&.light {
-		.theme-mask(@f6, 20%);
+	&.left {
+		.theme-mask(left, @f6, 20%);
+	}
+	&.right {
+		.theme-mask(right, @f6, 20%);
 	}
 }
 
@@ -210,7 +213,7 @@ zh {
 
 #index-body > #opening {
 	height: @brand-height;
-	line-height: @brand-font-size;
+	line-height: @brand-height;
 	
 	h1, h2 {
 		font-family: @brand-font;
