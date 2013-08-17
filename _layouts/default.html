@@ -12,8 +12,8 @@
 {% endif %}
 {% if page.pre.desc %}
 	<meta property="og:description" content="{{ page.pre.desc }}" />
-{% elsif page.digest %}
-	<meta property="og:description" content="{{ page.digest | join: '' }}" />
+{% elsif page.teaser %}
+	<meta property="og:description" content="{{ page.teaser | join: '' }}" />
 {% endif %}
 	<title>{{ site.name }}{% if page.title %} / {{ page.title }} {% endif %}</title>
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
